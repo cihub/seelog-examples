@@ -12,3 +12,5 @@ Seelog examples can be found in 'seelog/examples' folder. Current list of exampl
 * **examples/outputs** - demonstrates dispatchers and writers
 * **examples/formats** - demonstrates formats
 * **examples/types** - demonstrates logger types
+* **examples/stresstest** - demonstrates logger replacement on-the-fly stress test
+* **examples/library** - demonstrates Seelog usage in libraries
