@@ -92,7 +92,7 @@ func asyncTimerLogger() {
 	fmt.Println("Async timer test")
 
 	testConfig := `
-<seelog type="asynctimer" asyncinterval="500">
+<seelog type="asynctimer" asyncinterval="5000000">
 	<outputs>
 		<filter levels="trace">
 			<file path="log.log"/>
@@ -113,7 +113,7 @@ func asyncTimerLogger() {
 
 func doTest() {
 	start := time.Now()
-	for i := 0; i < 30; i += 2 {
+	for i := 0; i < 50; i += 2 {
 		fmt.Printf("%d\n", i)
 		log.Trace(longMessage)
 		log.Debug("%d", i+1)
