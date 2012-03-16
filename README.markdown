@@ -8,9 +8,12 @@ Examples
 
 Seelog examples can be found in 'seelog/examples' folder. Current list of examples: 
 
-* **examples/exceptions** - demonstrates constraints and exceptions
-* **examples/outputs** - demonstrates dispatchers and writers
-* **examples/formats** - demonstrates formats
-* **examples/types** - demonstrates logger types
-* **examples/stresstest** - demonstrates logger replacement on-the-fly stress test
-* **examples/library** - demonstrates Seelog usage in libraries
+* **starter.go** - runs all examples
+* **exceptions_main.go** - demonstrates constraints and exceptions
+* **outputs_main.go** - demonstrates dispatchers and writers
+* **formats_main.go** - demonstrates formats
+* **types_main.go** - demonstrates logger types
+* **stresstest_main.go** - demonstrates logger replacement on-the-fly stress test
+* **lib_with_sl_main.go** - demonstrates Seelog usage with code that imports Seelog
+* **lib_without_sl_main.go** - demonstrates Seelog usage with code that doesn't import Seelog
+* **library/lib_log.go** - demonstrates library template with Seelog

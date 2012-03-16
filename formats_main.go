@@ -29,7 +29,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func formatsMain() {
 	defer log.Flush()
 	defaultFormat()
 	stdFormat()

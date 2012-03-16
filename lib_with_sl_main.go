@@ -6,7 +6,7 @@ package main
 
 import (
 	log "github.com/cihub/seelog"
-	library "github.com/cihub/seelog-examples/library/library"
+	library "github.com/cihub/seelog-examples/library"
 	"fmt"
 )
 
@@ -29,7 +29,7 @@ func loadAppConfig() {
 	log.ReplaceLogger(logger)
 }
 
-func calcF() {
+func calcF2() {
 	x := 1
 	y := 2
 	log.Debug("Calculating F")
@@ -78,7 +78,7 @@ func specialOutputConfig() {
 	library.UseLogger(logger)
 }
 
-func main() {
+func libWithSealogMain() {
 	defer library.FlushLog()
 	defer log.Flush()
 	loadAppConfig()	
@@ -88,19 +88,19 @@ func main() {
 	// Disable library log
 	log.Info("* Disabled library log test")
 	library.DisableLog();
-	calcF();
+	calcF2();
 	log.Info("* Disabled library log tested")
 
 	// Use a special logger for library
 	log.Info("* Special output test")
 	specialOutputConfig()
-	calcF();
+	calcF2();
 	log.Info("* Special output tested")
 	
 	// Use the same logger for both app and library
 	log.Info("* Same output test")
 	sameOutputConfig()
-	calcF();
+	calcF2();
 	log.Info("* Same output tested")
 		
 	log.Info("App finished")

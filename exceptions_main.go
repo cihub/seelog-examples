@@ -29,7 +29,7 @@ import (
 	log "github.com/cihub/seelog"
 )
 
-func main() {
+func exceptionsMain() {
 	defer log.Flush()
 	testMinMax()
 	testMin()

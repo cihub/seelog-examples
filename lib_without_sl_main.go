@@ -5,7 +5,7 @@
 package main
 
 import (
-	library "github.com/cihub/seelog-examples/library/library"
+	library "github.com/cihub/seelog-examples/library"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ func (cons ConsoleWriter) Write(p []byte) (n int, err error) {
 	return len(p), nil
 }
 
-func calcF() {
+func calcF1() {
 	x := 1
 	y := 2
 	console.Print("Calculating F")
@@ -30,8 +30,8 @@ func calcF() {
 	console.Print(fmt.Sprintf("Got F = %d", result))
 }
 
-func main() {
+func libWithoutSealogMain() {
 	library.SetLogWriter(console)
-	calcF()
+	calcF1()
 	library.FlushLog()
 }

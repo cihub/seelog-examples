@@ -22,10 +22,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-package testlibrary
-
-import (
-)
+package library
 
 // calculateF is a meaningless example which just imitates some 
 // heavy calculation operation and performs logging inside

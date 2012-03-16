@@ -34,7 +34,7 @@ import (
 
 var longMessage = strings.Repeat("A", 1024*100)
 
-func main() {
+func typesMain() {
 	defer log.Flush()
 	syncLogger()
 	fmt.Println()

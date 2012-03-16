@@ -26,7 +26,6 @@ package main
 
 import (
 	log "github.com/cihub/seelog"
-	"github.com/cihub/seelog/test"
 	"crypto/rand"
 	"path/filepath"
 	"math/big"
@@ -34,6 +33,12 @@ import (
 	"fmt"
 	"os"
 	"time"
+	"io"
+	"io/ioutil"
+	"strconv"
+	"bufio"
+	"bytes"
+	"errors"
 )
 
 const (
@@ -164,6 +169,41 @@ var fileBufferedAsyncTimer10000Config = `
 </seelog>`
 
 
+func countSequencedRowsInFile(filePath string) (int64, error) {
+	bts, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		 return 0, err
+	}
+	
+	bufReader := bufio.NewReader(bytes.NewBuffer(bts))
+	
+	var gotCounter int64
+	for ;; {
+		line, _, bufErr := bufReader.ReadLine()
+		if bufErr != nil && bufErr != io.EOF {
+			return 0, bufErr
+		}
+
+		lineString := string(line)
+		if lineString == "" {
+			break
+		}
+
+		intVal, atoiErr := strconv.ParseInt(lineString, 10, 64)
+		if atoiErr != nil {
+			return 0, atoiErr
+		}
+		
+		if intVal != gotCounter {
+			return 0, errors.New(fmt.Sprintf("Wrong order: %d Expected: %d\n", intVal, gotCounter))
+		}
+				
+		gotCounter++		
+	}
+	
+	return gotCounter, nil
+}
+
 var configPool = []string {
 	fileConfig,
 	fileAsyncLoopConfig,
@@ -212,7 +252,7 @@ func logRoutine(ind int) {
 
 
 
-func main() {
+func stressMain() {
 	os.Remove(filepath.Join(LogDir, LogFile))
 	switchToRandomConfigFromPool()
 	
@@ -234,7 +274,7 @@ func main() {
 	duration := timeEnd.Sub(timeStart)
 	averageLoggerReplaceFrequency := float32(loggerReplacements) / (float32(duration.Nanoseconds()) / 1e9)
 
-	gotCount, err := test.CountSequencedRowsInFile(filepath.Join(LogDir, LogFile))
+	gotCount, err := countSequencedRowsInFile(filepath.Join(LogDir, LogFile))
 	if err != nil {
 		fmt.Println(err.Error())
 	}

@@ -30,7 +30,7 @@ import (
 	"time"
 )
 
-func main() {
+func outputsMain() {
 	defer log.Flush()
 	runExample(consoleWriter)
 	runExample(fileWriter)
