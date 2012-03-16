@@ -6,7 +6,7 @@ This package contains examples of [Seelog](https://github.com/cihub/seelog) usag
 Examples
 ---------------
 
-Seelog examples can be found in 'seelog/examples' folder. Current list of examples: 
+Current list of examples: 
 
 * **starter.go** - runs all examples
 * **exceptions_main.go** - demonstrates constraints and exceptions
