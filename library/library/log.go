@@ -26,7 +26,6 @@ package testlibrary
 
 import (
 	seelog "github.com/cihub/seelog"
-	common "github.com/cihub/seelog/common"
 	"io"
 	"errors"
 )
@@ -55,7 +54,7 @@ func SetLogWriter(writer io.Writer) error {
 		return errors.New("Nil writer")
 	}
 	
-	newLogger, err := seelog.LoggerFromWriterWithMinLevel(writer, common.TraceLvl)
+	newLogger, err := seelog.LoggerFromWriterWithMinLevel(writer, seelog.TraceLvl)
 	if err != nil {
 		return err
 	}
