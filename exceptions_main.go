@@ -133,6 +133,13 @@ func testFuncException() {
 	log.Warn("NOT Printed")
 	log.Error("Printed")
 	log.Critical("Printed")
+
+	log.Current.Trace("NOT Printed")
+	log.Current.Debug("NOT Printed")
+	log.Current.Info("NOT Printed")
+	log.Current.Warn("NOT Printed")
+	log.Current.Error("Printed")
+	log.Current.Critical("Printed")
 }
 
 func testFileException() {

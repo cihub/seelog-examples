@@ -84,12 +84,21 @@ func dateTimeFormat() {
 		<console/>
 	</outputs>
 	<formats>
-		<format id="main" format="%Date/%Time [%Level] %Msg%n"/>
+		<format id="main" format="%Date/%Time [%LEV] %Msg%n"/>
 	</formats>
 </seelog>`
 
-	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	logger, err := log.LoggerFromConfigAsBytes([]byte(testConfig))
+	
+	if err != nil {
+		fmt.Println(err)
+	}
+	
+	loggerErr := log.UseLogger(logger)
+	
+	if loggerErr != nil {
+		fmt.Println(loggerErr)
+	}
 	
 	log.Trace("Test message!")
 }
