@@ -41,6 +41,7 @@ func outputsMain() {
 	runExample(bufferedWriterWithOverflow)
 	runExample(splitDispatcher)
 	runExample(filterDispatcher)
+	//runExample(smtpWriter)
 }
 
 func runExample(exampleFunc func()) {
@@ -211,6 +212,22 @@ func filterDispatcher() {
 		log.Trace("This message on console and in file")
 		log.Debug("This message only on console")
 	}
+}
+
+func smtpWriter() {
+ testConfig := `
+ <seelog>
+  <outputs>
+   <smtp senderaddress="noreply-notification-service@none.org" sendername="Automatic notification service" hostname="mail.none.org" hostport="587" username="nns" password="123">
+    <recipient address="john-smith@none.com"/>
+   </smtp>
+  </outputs>
+ </seelog>
+ `
+ logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
+ log.ReplaceLogger(logger)
+ fmt.Println("SMTP writer is now sending emails to the specified recipients")
+ doLog()
 }
 
 func doLog() {
