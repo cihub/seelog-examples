@@ -17,3 +17,4 @@ Current list of examples:
 * **lib_with_sl_main.go** - demonstrates Seelog usage with code that imports Seelog
 * **lib_without_sl_main.go** - demonstrates Seelog usage with code that doesn't import Seelog
 * **library/lib_log.go** - demonstrates library template with Seelog
+* **adaptive_main.go** - demonstrates adaptive logger type
