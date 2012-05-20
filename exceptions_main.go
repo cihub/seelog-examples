@@ -48,7 +48,7 @@ func testMinMax() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("NOT Printed")
 	log.Debug("NOT Printed")
@@ -66,7 +66,7 @@ func testMin() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("NOT Printed")
 	log.Debug("NOT Printed")
@@ -84,7 +84,7 @@ func testMax() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Printed")
 	log.Debug("Printed")
@@ -102,7 +102,7 @@ func testList() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Printed")
 	log.Debug("NOT Printed")
@@ -125,7 +125,7 @@ func testFuncException() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("NOT Printed")
 	log.Debug("NOT Printed")
@@ -155,7 +155,7 @@ func testFileException() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("NOT Printed")
 	log.Debug("NOT Printed")

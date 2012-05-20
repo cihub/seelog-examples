@@ -51,7 +51,7 @@ func defaultFormat() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Test message!")
 }
@@ -70,7 +70,7 @@ func stdFormat() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Test message!")
 }
@@ -94,7 +94,7 @@ func dateTimeFormat() {
 		fmt.Println(err)
 	}
 	
-	loggerErr := log.UseLogger(logger)
+	loggerErr := log.ReplaceLogger(logger)
 	
 	if loggerErr != nil {
 		fmt.Println(loggerErr)
@@ -117,7 +117,7 @@ func dateTimeCustomFormat() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Test message!")
 }
@@ -136,7 +136,7 @@ func logLevelTypesFormat() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Test message!")
 }
@@ -155,7 +155,7 @@ func fileTypesFormat() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Test message!")
 }
@@ -174,7 +174,7 @@ func funcFormat() {
 </seelog>`
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Test message!")
 }
@@ -199,7 +199,7 @@ func xmlFormat() {
 
 	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
 
-	log.UseLogger(logger)
+	log.ReplaceLogger(logger)
 	
 	log.Trace("Test message!")
 }
