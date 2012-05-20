@@ -26,7 +26,7 @@ package main
 
 import (
 	"time"
-	log "seelog"
+	log "github.com/cihub/seelog"
 )
 
 func adaptiveMain() {
