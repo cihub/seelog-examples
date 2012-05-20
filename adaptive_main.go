@@ -24,13 +24,45 @@
 
 package main
 
-func main() {
-	libWithoutSealogMain()
-	libWithSealogMain()
-	exceptionsMain()
-	formatsMain()
-	outputsMain()
-	typesMain()
-	stressMain()
-	adaptiveMain()
+import (
+	"time"
+	log "seelog"
+)
+
+func adaptiveMain() {
+	defer log.Flush()
+	loadAdaptiveConfig()
+	testMsgIntensity(1)
+	testMsgIntensity(5)
+	testMsgIntensity(10)
+}
+
+func testMsgIntensity(intensity int) {
+	log.Default.Info("Intensity test: %d", intensity)
+	
+	for j := 0; j < 4; j++ {
+		for i := 0; i < intensity; i++ {
+			log.Trace("%d", i)
+			<-time.After(time.Second / time.Duration(intensity))
+		}
+	}
+	
+	log.Default.Info("Messages sent")
+	
+	<-time.After(time.Second * time.Duration(intensity))
+}
+
+func loadAdaptiveConfig() {
+	testConfig := `<seelog type="adaptive" mininterval="200000000" maxinterval="1000000000" critmsgcount="5">
+	<outputs formatid="msg">
+		<console/>
+	</outputs>
+	<formats>
+		<format id="msg" format="%Time: %Msg%n"/>
+	</formats>
+</seelog>`
+
+	logger, _ := log.LoggerFromConfigAsBytes([]byte(testConfig))
+
+	log.ReplaceLogger(logger)
 }
