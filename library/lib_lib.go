@@ -27,14 +27,14 @@ package library
 // calculateF is a meaningless example which just imitates some 
 // heavy calculation operation and performs logging inside
 func CalculateF(x, y int) int {
-	logger.Info("Calculating F(%d, %d)", x, y)
+	logger.Infof("Calculating F(%d, %d)", x, y)
 	
 	for i := 0; i < 10; i++ {
-		logger.Trace("F calc iteration %d", i)
+		logger.Tracef("F calc iteration %d", i)
 	}
 	
 	result := x + y
 	
-	logger.Debug("F = %d", result)
+	logger.Debugf("F = %d", result)
 	return result
 }

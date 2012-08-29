@@ -38,11 +38,11 @@ func adaptiveMain() {
 }
 
 func testMsgIntensity(intensity int) {
-	log.Default.Info("Intensity test: %d", intensity)
+	log.Default.Infof("Intensity test: %d", intensity)
 	
 	for j := 0; j < 4; j++ {
 		for i := 0; i < intensity; i++ {
-			log.Trace("%d", i)
+			log.Tracef("%d", i)
 			<-time.After(time.Second / time.Duration(intensity))
 		}
 	}

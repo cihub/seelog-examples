@@ -34,7 +34,7 @@ func calcF2() {
 	y := 2
 	log.Debug("Calculating F")
 	result := library.CalculateF(x,y)
-	log.Debug("Got F = %d", result)
+	log.Debugf("Got F = %d", result)
 }
 
 // Same config for both library and app

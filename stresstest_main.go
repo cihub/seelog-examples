@@ -240,7 +240,7 @@ func switchToRandomConfigFromPool() {
 func logRoutine(ind int) {
 	for i := 0; i < logsPerGoroutineCount; i++ {
 		counterMutex.Lock()
-		log.Debug("%d", counter)
+		log.Debugf("%d", counter)
 		//fmt.Printf("log #%v from #%v\n", i, ind)
 		counter++
 		switchToRandomConfigFromPool()

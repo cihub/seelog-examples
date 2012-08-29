@@ -232,12 +232,12 @@ func smtpWriter() {
 
 func doLog() {
 	for i:=0; i < 5; i++ {
-		log.Trace("%d", i)
+		log.Tracef("%d", i)
 	}
 }
 
 func doLogBig() {
 	for i:=0; i < 50; i++ {
-		log.Trace("%d", i)
+		log.Tracef("%d", i)
 	}
 }

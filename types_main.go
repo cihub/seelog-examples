@@ -116,7 +116,7 @@ func doTest() {
 	for i := 0; i < 50; i += 2 {
 		fmt.Printf("%d\n", i)
 		log.Trace(longMessage)
-		log.Debug("%d", i+1)
+		log.Debugf("%d", i+1)
 	}
 	end := time.Now()
 	dur := end.Sub(start)
