@@ -25,12 +25,12 @@
 package main
 
 func main() {
-	libWithoutSealogMain()
-	libWithSealogMain()
-	exceptionsMain()
-	formatsMain()
-	outputsMain()
-	typesMain()
-	stressMain()
-	adaptiveMain()
+    libWithoutSealogMain()
+    libWithSealogMain()
+    exceptionsMain()
+    formatsMain()
+    outputsMain()
+    typesMain()
+    stressMain()
+    adaptiveMain()
 }

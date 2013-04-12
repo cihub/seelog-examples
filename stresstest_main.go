@@ -31,6 +31,7 @@ import (
 	"math/big"
 	"sync"
 	"fmt"
+	"runtime"
 	"os"
 	"time"
 	"io"
@@ -240,11 +241,15 @@ func switchToRandomConfigFromPool() {
 func logRoutine(ind int) {
 	for i := 0; i < logsPerGoroutineCount; i++ {
 		counterMutex.Lock()
-		log.Debugf("%d", counter)
-		//fmt.Printf("log #%v from #%v\n", i, ind)
+		counterVal := counter
 		counter++
-		switchToRandomConfigFromPool()
+		log.Debugf("%d", counterVal)
 		counterMutex.Unlock()
+
+		//fmt.Printf("log #%v from #%v\n", i, ind)
+		
+		switchToRandomConfigFromPool()
+		
 	}
 	
 	waitGroup.Done()
@@ -253,6 +258,8 @@ func logRoutine(ind int) {
 
 
 func stressMain() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
+
 	os.Remove(filepath.Join(LogDir, LogFile))
 	switchToRandomConfigFromPool()
 	
@@ -279,10 +286,9 @@ func stressMain() {
 		fmt.Println(err.Error())
 	}
 
-	fmt.Printf("Logger replaced %d times. Average replacement frequency: %f times / second. Output log is consistent: no log messages are missing or come in incorrect order.\n", loggerReplacements, averageLoggerReplaceFrequency)
-	
 	if counter == gotCount {
 		fmt.Println("PASS! Output is valid")
+		fmt.Printf("Logger replaced %d times. Average replacement frequency: %f times / second. Output log is consistent: no log messages are missing or come in incorrect order.\n", loggerReplacements, averageLoggerReplaceFrequency)
 	} else {
 		fmt.Println("ERROR! Output not valid")
 	}
