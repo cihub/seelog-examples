@@ -118,7 +118,7 @@ func syslogCustomFormatter() {
 	defer log.Flush()
 
 	// NOTE: in real usecases a conn writer should be used instead of console.
-	// Example: <conn formatid="syslogfmt" net="tcp4" addr="server.address:5514" useTLS="true" insecureSkipVerify="true" />
+	// Example: <conn formatid="syslogfmt" net="tcp4" addr="server.address:5514" usetls="true" insecureskipverify="true" />
 	testConfig := `
 <seelog type="sync">
 	<outputs formatid="syslogfmt">
